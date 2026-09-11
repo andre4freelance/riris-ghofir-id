@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fashion-black: #111111;
+  --color-fashion-dark: #1c1c1e;
+  --color-fashion-gold: #b38e5d;
+  --color-fashion-gold-hover: #9a7848;
+  --color-fashion-gold-light: #faf7f2;
+  --color-fashion-canvas: #ffffff;
+  --color-fashion-surface: #f9f9f9;
+  --color-fashion-card: #fdfdfd;
+  --color-fashion-border: #eeeeee;
+  --color-fashion-border-dark: #d5d5d5;
+  --color-fashion-muted: #666666;
+  --color-fashion-subtle: #8e8e93;
+
+  --font-serif: "Cormorant Garamond", Georgia, Cambria, serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--color-fashion-canvas);
+  color: var(--color-fashion-black);
+  font-family: var(--font-sans);
+}
