@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { MessageCircle, Menu, X, Instagram, MapPin, Calendar } from "lucide-react";
+import { MessageCircle, Menu, X, MapPin, Calendar } from "lucide-react";
 import { BOUTIQUE_INFO } from "../data/catalog";
+import { InstagramIcon } from "./SocialIcons";
 
 export const Header: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ export const Header: React.FC = () => {
           rel="noopener noreferrer"
           className="text-[#B38E5D] hover:underline inline-flex items-center gap-1 font-semibold"
         >
-          <Instagram className="w-3 h-3" /> @ririsghofir.official
+          <InstagramIcon className="w-3 h-3" /> @ririsghofir.official
         </a>
       </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
-import { Instagram, Facebook, MapPin, Phone, Mail, ArrowUp } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowUp } from "lucide-react";
 import { BOUTIQUE_INFO } from "../data/catalog";
+import { InstagramIcon, FacebookIcon } from "./SocialIcons";
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -31,7 +32,7 @@ export const Footer: React.FC = () => {
                 className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#B38E5D] flex items-center justify-center text-white transition-colors"
                 aria-label="Instagram Riris Ghofir"
               >
-                <Instagram className="w-4 h-4" />
+                <InstagramIcon className="w-4 h-4" />
               </a>
               <a
                 href={BOUTIQUE_INFO.facebookUrl}
@@ -40,7 +41,7 @@ export const Footer: React.FC = () => {
                 className="w-9 h-9 rounded-full bg-white/5 hover:bg-[#B38E5D] flex items-center justify-center text-white transition-colors"
                 aria-label="Facebook Riris Ghofir"
               >
-                <Facebook className="w-4 h-4" />
+                <FacebookIcon className="w-4 h-4" />
               </a>
             </div>
           </div>
