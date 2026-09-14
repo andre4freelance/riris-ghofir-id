@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MessageCircle, X, Ruler, Sparkles, Check } from "lucide-react";
+import { MessageCircle, X, Ruler, Check } from "lucide-react";
 import { FashionProduct, BOUTIQUE_INFO } from "../data/catalog";
 import { ImageWithFallback } from "./ImageWithFallback";
 
@@ -10,41 +10,75 @@ interface QuickViewModalProps {
 
 export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose }) => {
   const [selectedSize, setSelectedSize] = useState<string>("");
+  const [activeImage, setActiveImage] = useState<string>("");
+
+  React.useEffect(() => {
+    if (product) {
+      setActiveImage(product.image);
+      setSelectedSize(product.sizes[0] || "");
+    }
+  }, [product]);
 
   if (!product) return null;
 
   const currentSize = selectedSize || product.sizes[0];
+  const displayImage = activeImage || product.image;
 
   const handleWhatsAppInquiry = () => {
     const text = encodeURIComponent(
-      `Halo Riris Ghofir Boutique, saya tertarik memesan koleksi "${product.name}" (${product.collection}) dengan ukuran: ${currentSize}. Apakah masih tersedia / bisa reservasi fitting?`
+      `Halo Riris Ghofir Boutique, saya tertarik berkonsultasi mengenai koleksi "${product.name}" (${product.collection}) pilihan ukuran: ${currentSize}. Apakah busana ini bisa fitting di butik / pesan?`
     );
     window.open(`https://wa.me/${BOUTIQUE_INFO.whatsappNumber}?text=${text}`, "_blank");
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
       <div
-        className="relative w-full max-w-4xl bg-white max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col md:flex-row border border-[#E5E5E5]"
+        className="relative w-full max-w-4xl bg-white max-h-[92vh] overflow-y-auto shadow-2xl flex flex-col md:flex-row border border-[#E5E5E5]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 p-2 text-[#111111] hover:text-[#B38E5D] bg-white/90 rounded-full transition-colors"
+          className="btn btn-sm btn-circle btn-ghost absolute top-4 right-4 z-10 text-[#111111] hover:text-[#B38E5D] bg-white/90"
           aria-label="Tutup modal"
         >
-          <X className="w-6 h-6" />
+          <X className="w-5 h-5" />
         </button>
 
         {/* Product Image Column */}
-        <div className="w-full md:w-1/2 bg-[#F9F9F9]">
-          <ImageWithFallback
-            src={product.image}
-            alt={product.name}
-            aspectRatio="aspect-[3/4]"
-            badgeLabel={product.badge}
-            className="w-full h-full"
-          />
+        <div className="w-full md:w-1/2 bg-[#F9F9F9] flex flex-col">
+          <div className="flex-1">
+            <ImageWithFallback
+              src={displayImage}
+              alt={product.name}
+              aspectRatio="aspect-[3/4]"
+              badgeLabel={product.badge}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Multi-angle gallery thumbnails */}
+          {product.gallery && product.gallery.length > 1 && (
+            <div className="flex items-center gap-2 p-3 bg-white border-t border-[#EEEEEE] overflow-x-auto">
+              <span className="text-[10px] uppercase font-semibold text-[#8E8E93] mr-1 shrink-0">
+                Sudut:
+              </span>
+              {product.gallery.map((img, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveImage(img)}
+                  className={`w-12 h-16 shrink-0 overflow-hidden border-2 transition-all cursor-pointer ${
+                    displayImage === img
+                      ? "border-[#111111] opacity-100 shadow-xs"
+                      : "border-transparent opacity-60 hover:opacity-100"
+                  }`}
+                  title={`Tampilan sudut ${idx + 1}`}
+                >
+                  <img src={img} alt={`Sudut ${idx + 1}`} className="w-full h-full object-cover" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Product Details Column */}
@@ -55,7 +89,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
                 {product.collection}
               </span>
               {product.badge && (
-                <span className="text-[10px] uppercase tracking-wider px-2 py-0.5 bg-[#111111] text-white">
+                <span className="badge badge-sm badge-neutral rounded-none text-[10px] uppercase tracking-wider bg-[#111111] text-white border-none">
                   {product.badge}
                 </span>
               )}
@@ -103,7 +137,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
                   Pilihan Ukuran:
                 </span>
                 <span className="text-xs text-[#8E8E93] flex items-center gap-1">
-                  <Ruler className="w-3.5 h-3.5" /> Size Guide
+                  <Ruler className="w-3.5 h-3.5" /> Panduan Ukuran & Custom
                 </span>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -111,10 +145,10 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
                   <button
                     key={sz}
                     onClick={() => setSelectedSize(sz)}
-                    className={`px-3 py-1.5 text-xs font-medium border transition-colors ${
+                    className={`btn btn-sm rounded-none text-xs font-medium transition-colors ${
                       currentSize === sz
-                        ? "bg-[#111111] text-white border-[#111111]"
-                        : "bg-white text-[#111111] border-[#CCCCCC] hover:border-[#111111]"
+                        ? "btn-neutral bg-[#111111] text-white border-[#111111]"
+                        : "btn-outline border-[#CCCCCC] text-[#111111] hover:border-[#111111] hover:bg-[#F5F5F5] hover:text-[#111111]"
                     }`}
                   >
                     {sz}
@@ -124,17 +158,17 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({ product, onClose
             </div>
           </div>
 
-          {/* Action Button */}
+          {/* Action Button (Pure Landing Page Consultation) */}
           <div className="pt-4 border-t border-[#EEEEEE]">
             <button
               onClick={handleWhatsAppInquiry}
-              className="w-full py-3.5 px-6 bg-[#111111] hover:bg-[#B38E5D] text-white font-medium text-xs tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-2 shadow-sm"
+              className="btn btn-neutral w-full rounded-none tracking-widest uppercase text-xs font-semibold py-3.5 bg-[#111111] hover:bg-[#B38E5D] text-white border-none shadow-sm gap-2"
             >
-              <MessageCircle className="w-4 h-4" />
-              Pesan / Konsultasi Fitting via WhatsApp
+              <MessageCircle className="w-4 h-4 text-[#25D366]" />
+              <span>Konsultasi Fitting / Pesan via WhatsApp</span>
             </button>
             <p className="text-[11px] text-center text-[#8E8E93] mt-2">
-              Melayani pengiriman seluruh Indonesia & reservasi fitting butik Surabaya
+              Kunjungi Butik Jl. Ngagel Jaya 96 Surabaya atau melayani konsultasi jarak jauh
             </p>
           </div>
         </div>

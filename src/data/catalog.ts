@@ -7,6 +7,7 @@ export interface FashionProduct {
   priceDisplay: string;
   badge?: "Runway Piece" | "Signature" | "New Arrival" | "Made to Order";
   image: string;
+  gallery?: string[];
   description: string;
   details: string[];
   sizes: string[];
@@ -38,6 +39,11 @@ export const PRODUCTS: FashionProduct[] = [
     priceDisplay: "Custom Bespoke / Konsultasi",
     badge: "Runway Piece",
     image: "/images/products/royal-emerald-kebaya.jpg",
+    gallery: [
+      "/images/products/royal-emerald-kebaya.jpg",
+      "/images/products/royal-emerald-kebaya-02-trail.jpg",
+      "/images/products/royal-emerald-kebaya-03-walk.jpg"
+    ],
     description: "Kebaya couture siluet modern dengan detail bordir manual bernuansa flora Jawa klasik yang dipadukan dengan aksen struktural modern Eropa. Dilengkapi selendang sutra satin tersemat.",
     details: [
       "Bordir manual presisi tinggi oleh artisan bordir berpengalaman",
@@ -92,6 +98,11 @@ export const PRODUCTS: FashionProduct[] = [
     priceDisplay: "Rp 1.450.000",
     badge: "Signature",
     image: "/images/products/noir-pearl-tunic.jpg",
+    gallery: [
+      "/images/products/noir-pearl-tunic.jpg",
+      "/images/products/noir-pearl-tunic-02-walk.jpg",
+      "/images/products/noir-pearl-tunic-03-detail.jpg"
+    ],
     description: "Tunik hitam klasik dengan taburan mutiara dan bordir geometris terinspirasi estetika minimalis Korea. Sangat serasi dipadukan dengan celana palazzo atau rok plisket.",
     details: [
       "Material woolpeach tebal tidak menerawang dan tidak mudah kusut",
@@ -146,6 +157,11 @@ export const PRODUCTS: FashionProduct[] = [
     priceDisplay: "Mulai Rp 2.650.000",
     badge: "Signature",
     image: "/images/products/rose-dust-kebaya.jpg",
+    gallery: [
+      "/images/products/rose-dust-kebaya.jpg",
+      "/images/products/rose-dust-kebaya-02-seated.jpg",
+      "/images/products/rose-dust-kebaya-03-detail.jpg"
+    ],
     description: "Kebaya modern warna rose dust lembut dengan aksen bordir floral 3D timbul. Memberikan kesan muda, segar, dan anggun untuk resepsi keluarga atau wisuda.",
     details: [
       "Bordir 3 dimensi berdimensi artistik",

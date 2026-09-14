@@ -4,6 +4,7 @@ import { HeroSection } from "./components/HeroSection";
 import { CategoryTiles } from "./components/CategoryTiles";
 import { CatalogSection } from "./components/CatalogSection";
 import { DesignerStory } from "./components/DesignerStory";
+import { BoutiqueExperience } from "./components/BoutiqueExperience";
 import { StoreLocation } from "./components/StoreLocation";
 import { Footer } from "./components/Footer";
 import { WhatsAppFloating } from "./components/WhatsAppFloating";
@@ -18,12 +19,13 @@ export function App() {
       {/* Zalora Style Sticky Header */}
       <Header />
 
-      {/* Main Showcase Sections */}
+      {/* Main Showcase Sections (Landing Page) */}
       <main className="flex-1">
         <HeroSection />
         <CategoryTiles />
         <CatalogSection onQuickView={(product) => setSelectedProduct(product)} />
         <DesignerStory />
+        <BoutiqueExperience />
         <StoreLocation />
       </main>
 
@@ -31,7 +33,7 @@ export function App() {
       <Footer />
       <WhatsAppFloating />
 
-      {/* Quick View Drawer Modal */}
+      {/* Quick View Modal */}
       <QuickViewModal
         product={selectedProduct}
         onClose={() => setSelectedProduct(null)}

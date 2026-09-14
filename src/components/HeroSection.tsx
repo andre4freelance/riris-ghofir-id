@@ -1,6 +1,7 @@
 import React from "react";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { Sparkles, ArrowRight, Calendar } from "lucide-react";
 import { BOUTIQUE_INFO } from "../data/catalog";
+import { ImageWithFallback } from "./ImageWithFallback";
 
 export const HeroSection: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-7 flex flex-col justify-center text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E5E5E5] text-[11px] font-semibold tracking-widest uppercase text-[#B38E5D] mb-6 self-start shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-[#E5E5E5] text-[11px] font-semibold tracking-widest uppercase text-[#B38E5D] mb-6 self-start shadow-xs">
               <Sparkles className="w-3.5 h-3.5 text-[#B38E5D]" />
               Indonesia Fashion Aesthetic 2026 Runway Designer
             </div>
@@ -25,9 +26,10 @@ export const HeroSection: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <a
                 href="#koleksi"
-                className="px-8 py-4 bg-[#111111] hover:bg-[#B38E5D] text-white text-xs font-semibold tracking-widest uppercase text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-xs"
+                className="btn btn-neutral rounded-none px-8 py-4 bg-[#111111] hover:bg-[#B38E5D] text-white text-xs font-semibold tracking-widest uppercase text-center transition-all duration-300 border-none shadow-sm gap-2"
               >
-                Jelajahi Koleksi <ArrowRight className="w-4 h-4" />
+                <span>Jelajahi Koleksi</span>
+                <ArrowRight className="w-4 h-4" />
               </a>
 
               <a
@@ -36,9 +38,10 @@ export const HeroSection: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-8 py-4 bg-white hover:bg-[#F0F0F0] text-[#111111] border border-[#111111] text-xs font-semibold tracking-widest uppercase text-center transition-colors flex items-center justify-center gap-2"
+                className="btn btn-outline rounded-none px-8 py-4 bg-white hover:bg-[#111111] hover:text-white text-[#111111] border-[#111111] text-xs font-semibold tracking-widest uppercase text-center transition-colors gap-2"
               >
-                Reservasi Fitting Butik
+                <Calendar className="w-4 h-4" />
+                <span>Reservasi Fitting Butik</span>
               </a>
             </div>
 
@@ -47,7 +50,7 @@ export const HeroSection: React.FC = () => {
               <div>
                 <div className="font-serif text-2xl sm:text-3xl font-bold text-[#111111]">19K+</div>
                 <div className="text-[11px] uppercase tracking-wider text-[#8E8E93] mt-1 font-medium">
-                  Komunitas Instagram
+                  Pengikut Media Sosial
                 </div>
               </div>
               <div>
@@ -72,20 +75,25 @@ export const HeroSection: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-tr from-[#B38E5D]/20 to-transparent transform -rotate-1 rounded-none -z-10 border border-[#B38E5D]/30" />
 
               {/* Main Editorial Card */}
-              <div className="bg-white p-4 shadow-xl border border-[#EEEEEE]">
-                <div className="relative aspect-[3/4] bg-[#F3EFE9] overflow-hidden flex flex-col items-center justify-center p-8 text-center">
-                  <div className="w-16 h-16 rounded-full bg-[#111111] flex items-center justify-center text-[#B38E5D] mb-4 shadow-md">
-                    <Sparkles className="w-8 h-8" />
+              <div className="card bg-white p-4 shadow-xl border border-[#EEEEEE] rounded-none">
+                <div className="relative aspect-[3/4] bg-[#111111] overflow-hidden group">
+                  <ImageWithFallback
+                    src="/images/hero/hero-runway-emerald.jpg"
+                    alt="Signature Runway Series - Indonesia Fashion Aesthetic"
+                    aspectRatio="aspect-[3/4]"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent flex flex-col justify-end p-6 text-left">
+                    <span className="badge badge-warning text-[10px] tracking-widest uppercase font-semibold text-white bg-[#B38E5D] border-none mb-2 self-start rounded-none">
+                      IFA Runway Series
+                    </span>
+                    <h3 className="font-serif text-2xl font-bold text-white mb-1">
+                      Royal Emerald Couture
+                    </h3>
+                    <p className="text-xs text-white/80 line-clamp-2">
+                      Karya adibusana kebaya modern yang memukau di panggung peragaan busana Indonesia Fashion Aesthetic.
+                    </p>
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-[#111111] mb-2">
-                    Signature Runway Series
-                  </h3>
-                  <p className="text-xs text-[#666666] max-w-xs leading-relaxed mb-4">
-                    Koleksi gaun kebaya dan songket pilihan yang tampil di panggung Indonesia Fashion Aesthetic.
-                  </p>
-                  <span className="text-[10px] tracking-widest uppercase px-3 py-1 bg-[#B38E5D] text-white font-semibold">
-                    Atelier Exclusive
-                  </span>
                 </div>
 
                 <div className="mt-4 pt-3 flex items-center justify-between text-xs text-[#8E8E93]">

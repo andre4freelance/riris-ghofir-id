@@ -1,17 +1,17 @@
-import React from "react";
-import { MessageCircle, Search, Menu, X, Instagram, Heart } from "lucide-react";
+import React, { useState } from "react";
+import { MessageCircle, Menu, X, Instagram, MapPin, Calendar } from "lucide-react";
 import { BOUTIQUE_INFO } from "../data/catalog";
 
 export const Header: React.FC = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-[#EEEEEE] transition-all">
-      {/* Top Announcement Bar (Zalora Style) */}
+      {/* Top Announcement Bar (Zalora Editorial Bar) */}
       <div className="bg-[#111111] text-white text-[11px] py-2 px-4 text-center tracking-widest uppercase font-medium flex items-center justify-center gap-3">
-        <span>Koleksi Kebaya & Luxury Modest Wear Eksklusif</span>
-        <span className="hidden sm:inline text-[#B38E5D]">•</span>
-        <span className="hidden sm:inline">Kunjungi Butik Jl. Ngagel Jaya No. 96 Surabaya</span>
+        <span className="hidden md:inline">Atelier & Modest Wear Showcase</span>
+        <span className="hidden md:inline text-[#B38E5D]">•</span>
+        <span>Butik Fisik: Jl. Ngagel Jaya No. 96 Surabaya</span>
         <span className="text-[#B38E5D]">•</span>
         <a
           href={BOUTIQUE_INFO.instagramUrl}
@@ -23,71 +23,73 @@ export const Header: React.FC = () => {
         </a>
       </div>
 
-      {/* Main Nav Container */}
+      {/* Main DaisyUI Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Left: Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-[#111111]">
-            <a href="#koleksi" className="hover:text-[#B38E5D] transition-colors">
-              Koleksi
-            </a>
-            <a href="#kategori" className="hover:text-[#B38E5D] transition-colors">
-              Kategori
-            </a>
-            <a href="#desainer" className="hover:text-[#B38E5D] transition-colors">
-              Tentang Desainer
-            </a>
-            <a href="#butik" className="hover:text-[#B38E5D] transition-colors">
-              Lokasi Butik
-            </a>
-          </nav>
+        <div className="navbar min-h-20 p-0 justify-between">
+          {/* Navbar Start: Mobile Menu Toggle & Left Navigation */}
+          <div className="navbar-start w-auto lg:w-1/3">
+            <div className="lg:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="btn btn-ghost btn-circle text-[#111111]"
+                aria-label="Buka Menu"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
 
-          {/* Mobile menu trigger */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-[#111111] hover:text-[#B38E5D]"
-              aria-label="Toggle Navigation"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-widest text-[#111111]">
+              <a href="#koleksi" className="hover:text-[#B38E5D] transition-colors">
+                Koleksi
+              </a>
+              <a href="#kategori" className="hover:text-[#B38E5D] transition-colors">
+                Kategori
+              </a>
+              <a href="#desainer" className="hover:text-[#B38E5D] transition-colors">
+                Kiprah Desainer
+              </a>
+              <a href="#layanan" className="hover:text-[#B38E5D] transition-colors">
+                Alur Fitting
+              </a>
+              <a href="#butik" className="hover:text-[#B38E5D] transition-colors">
+                Lokasi
+              </a>
+            </nav>
           </div>
 
-          {/* Center: Brand Typography Logo */}
-          <div className="flex flex-col items-center justify-center text-center">
-            <a href="#" className="flex flex-col items-center">
-              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-[0.2em] text-[#111111]">
+          {/* Navbar Center: Brand Typography Logo */}
+          <div className="navbar-center">
+            <a href="#" className="flex flex-col items-center group py-2">
+              <span className="font-serif text-2xl sm:text-3xl font-bold tracking-[0.22em] text-[#111111] group-hover:text-[#B38E5D] transition-colors">
                 RIRIS GHOFIR
               </span>
-              <span className="text-[9px] uppercase tracking-[0.35em] text-[#8E8E93] font-medium mt-0.5">
+              <span className="text-[9px] uppercase tracking-[0.38em] text-[#8E8E93] font-medium mt-0.5">
                 Surabaya • Indonesia
               </span>
             </a>
           </div>
 
-          {/* Right: Actions (Search, Wishlist, WhatsApp CTA) */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="hidden sm:flex items-center text-[#8E8E93] hover:text-[#111111] cursor-pointer">
-              <Search className="w-4 h-4" />
-            </div>
-            <div className="hidden sm:flex items-center text-[#8E8E93] hover:text-[#111111] cursor-pointer relative">
-              <Heart className="w-4 h-4" />
-              <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-[#B38E5D] text-white rounded-full text-[9px] font-bold flex items-center justify-center">
-                0
-              </span>
-            </div>
+          {/* Navbar End: Direct WhatsApp & Fitting Reservation CTA (Landing Page Oriented) */}
+          <div className="navbar-end w-auto lg:w-1/3 justify-end gap-3 sm:gap-4">
+            <a
+              href="#butik"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-[#666666] hover:text-[#111111] transition-colors"
+            >
+              <MapPin className="w-3.5 h-3.5 text-[#B38E5D]" />
+              <span>Butik Surabaya</span>
+            </a>
 
             <a
               href={`https://wa.me/${BOUTIQUE_INFO.whatsappNumber}?text=${encodeURIComponent(
-                "Halo Riris Ghofir Boutique, saya ingin konsultasi busana kebaya / modest wear."
+                "Halo Riris Ghofir Boutique, saya melihat landing page showcase dan ingin konsultasi fitting kebaya / busana pesta."
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-[#111111] hover:bg-[#B38E5D] text-white text-xs font-medium tracking-widest uppercase transition-colors duration-200"
+              className="btn btn-neutral btn-sm rounded-none tracking-widest uppercase text-xs font-medium px-4 sm:px-5 bg-[#111111] hover:bg-[#B38E5D] text-white border-none shadow-sm gap-2"
             >
               <MessageCircle className="w-3.5 h-3.5 text-white" />
               <span className="hidden sm:inline">WhatsApp Stylist</span>
-              <span className="sm:hidden">Chat</span>
+              <span className="sm:hidden">Stylist</span>
             </a>
           </div>
         </div>
@@ -95,37 +97,59 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#EEEEEE] bg-white px-6 py-6 space-y-4">
+        <div className="lg:hidden border-t border-[#EEEEEE] bg-white px-6 py-6 space-y-4 animate-in fade-in duration-200">
           <nav className="flex flex-col space-y-4 text-sm font-medium uppercase tracking-wider text-[#111111]">
             <a
               href="#koleksi"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#B38E5D] py-1 border-b border-[#F5F5F5]"
+              className="hover:text-[#B38E5D] py-2 border-b border-[#F5F5F5] flex justify-between items-center"
             >
-              Koleksi Busana
+              <span>Koleksi Busana</span>
+              <span className="badge badge-sm badge-outline text-[10px]">Couture</span>
             </a>
             <a
               href="#kategori"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#B38E5D] py-1 border-b border-[#F5F5F5]"
+              className="hover:text-[#B38E5D] py-2 border-b border-[#F5F5F5]"
             >
-              Kategori Busana
+              Kategori Pilihan
             </a>
             <a
               href="#desainer"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#B38E5D] py-1 border-b border-[#F5F5F5]"
+              className="hover:text-[#B38E5D] py-2 border-b border-[#F5F5F5]"
             >
               Kiprah Desainer Riris Ghofir
             </a>
             <a
+              href="#layanan"
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-[#B38E5D] py-2 border-b border-[#F5F5F5]"
+            >
+              Layanan Fitting & Kustom
+            </a>
+            <a
               href="#butik"
               onClick={() => setMobileMenuOpen(false)}
-              className="hover:text-[#B38E5D] py-1"
+              className="hover:text-[#B38E5D] py-2 border-b border-[#F5F5F5] flex items-center gap-2"
             >
-              Alamat Butik Surabaya
+              <MapPin className="w-4 h-4 text-[#B38E5D]" />
+              <span>Lokasi Butik Surabaya</span>
             </a>
           </nav>
+
+          <div className="pt-2">
+            <a
+              href={`https://wa.me/${BOUTIQUE_INFO.whatsappNumber}?text=${encodeURIComponent(
+                "Halo Riris Ghofir Boutique, saya ingin reservasi jadwal konsultasi busana."
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-neutral w-full rounded-none tracking-widest uppercase text-xs bg-[#111111] text-white hover:bg-[#B38E5D] border-none"
+            >
+              <Calendar className="w-4 h-4" /> Reservasi Fitting via WA
+            </a>
+          </div>
         </div>
       )}
     </header>

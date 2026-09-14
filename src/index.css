@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
 @theme {
   --color-fashion-black: #111111;
@@ -14,7 +15,7 @@
   --color-fashion-muted: #666666;
   --color-fashion-subtle: #8e8e93;
 
-  --font-serif: "Cormorant Garamond", Georgia, Cambria, serif;
+  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -22,4 +23,5 @@ body {
   background-color: var(--color-fashion-canvas);
   color: var(--color-fashion-black);
   font-family: var(--font-sans);
+  scroll-behavior: smooth;
 }

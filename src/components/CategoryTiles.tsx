@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { ImageWithFallback } from "./ImageWithFallback";
 
 interface CategoryTile {
   title: string;
@@ -12,28 +13,28 @@ interface CategoryTile {
 const TILES: CategoryTile[] = [
   {
     title: "Signature Kebaya",
-    subtitle: "Siluet modern berpadu bordir manual klasik",
+    subtitle: "Siluet modern berpadu bordir manual klasik khas Jawa Timur",
     tag: "Haute Couture",
     link: "#koleksi",
     image: "/images/categories/kebaya.jpg"
   },
   {
     title: "Songket Palembang",
-    subtitle: "Kemewahan wastra tenun asli berbenang emas",
+    subtitle: "Kemewahan wastra tenun asli berbenang emas bertaraf regal",
     tag: "Heritage Luxe",
     link: "#koleksi",
     image: "/images/categories/songket.jpg"
   },
   {
     title: "Modest Luxury Gown",
-    subtitle: "Gaun syar'i-friendly bernuansa runway modern",
+    subtitle: "Gaun syar'i-friendly bernuansa runway modern & flowy",
     tag: "Ready-to-Wear",
     link: "#koleksi",
     image: "/images/categories/modest-gown.jpg"
   },
   {
     title: "Bespoke Bridal",
-    subtitle: "Layanan fitting personal untuk hari istimewa",
+    subtitle: "Layanan fitting personal untuk busana akad & resepsi sakral",
     tag: "Made to Order",
     link: "#koleksi",
     image: "/images/categories/bridal.jpg"
@@ -54,7 +55,7 @@ export const CategoryTiles: React.FC = () => {
             </h2>
           </div>
           <p className="text-xs sm:text-sm text-[#8E8E93] mt-2 sm:mt-0">
-            Standar busana panggung peragaan busana & resepsi formal
+            Katalog busana panggung peragaan busana & acara formal
           </p>
         </div>
 
@@ -63,23 +64,36 @@ export const CategoryTiles: React.FC = () => {
             <a
               key={idx}
               href={tile.link}
-              className="group relative overflow-hidden bg-white p-6 border border-[#EAEAEA] hover:border-[#111111] transition-all duration-300 flex flex-col justify-between min-h-[220px]"
+              className="card group relative overflow-hidden bg-white border border-[#EAEAEA] hover:border-[#111111] transition-all duration-300 rounded-none shadow-xs hover:shadow-md"
             >
-              <div>
-                <span className="inline-block text-[10px] uppercase tracking-widest font-semibold text-[#B38E5D] mb-3">
-                  {tile.tag}
-                </span>
-                <h3 className="font-serif text-xl text-[#111111] font-semibold mb-2 group-hover:text-[#B38E5D] transition-colors">
-                  {tile.title}
-                </h3>
-                <p className="text-xs text-[#666666] leading-relaxed">
-                  {tile.subtitle}
-                </p>
-              </div>
+              <figure className="relative aspect-[4/3] overflow-hidden bg-[#EEEEEE] m-0">
+                <ImageWithFallback
+                  src={tile.image}
+                  alt={tile.title}
+                  aspectRatio="aspect-[4/3]"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-3 left-3">
+                  <span className="badge badge-sm badge-neutral rounded-none text-[10px] uppercase tracking-widest font-semibold bg-[#111111] text-white border-none">
+                    {tile.tag}
+                  </span>
+                </div>
+              </figure>
 
-              <div className="pt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#111111] group-hover:text-[#B38E5D]">
-                <span>Lihat Desain</span>
-                <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <div className="card-body p-5 justify-between">
+                <div>
+                  <h3 className="card-title font-serif text-xl text-[#111111] font-semibold mb-1 group-hover:text-[#B38E5D] transition-colors">
+                    {tile.title}
+                  </h3>
+                  <p className="text-xs text-[#666666] leading-relaxed">
+                    {tile.subtitle}
+                  </p>
+                </div>
+
+                <div className="pt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#111111] group-hover:text-[#B38E5D] border-t border-[#F0F0F0]">
+                  <span>Lihat Busana</span>
+                  <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </div>
               </div>
             </a>
           ))}

@@ -77,25 +77,27 @@ export const StoreLocation: React.FC = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 bg-[#111111] hover:bg-[#B38E5D] text-white text-xs font-semibold tracking-widest uppercase transition-colors inline-flex items-center gap-2"
+                className="btn btn-neutral rounded-none text-xs font-semibold tracking-widest uppercase px-6 py-3.5 bg-[#111111] hover:bg-[#B38E5D] text-white border-none gap-2 shadow-xs"
               >
-                <MessageCircle className="w-4 h-4" /> Reservasi Fitting Online
+                <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                <span>Reservasi Fitting via WA</span>
               </a>
 
               <a
                 href="https://maps.google.com/?q=Jl.+Ngagel+Jaya+No.+96+Surabaya"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 bg-white border border-[#CCCCCC] hover:border-[#111111] text-[#111111] text-xs font-semibold tracking-widest uppercase transition-colors inline-flex items-center gap-2"
+                className="btn btn-outline rounded-none text-xs font-semibold tracking-widest uppercase px-6 py-3.5 border-[#CCCCCC] hover:border-[#111111] text-[#111111] hover:bg-[#111111] hover:text-white gap-2"
               >
-                <Navigation className="w-4 h-4" /> Petunjuk Arah Maps
+                <Navigation className="w-4 h-4" />
+                <span>Petunjuk Arah Google Maps</span>
               </a>
             </div>
           </div>
 
           {/* Right Map Embed Column */}
           <div className="lg:col-span-6">
-            <div className="p-3 bg-[#F9F9F9] border border-[#E5E5E5] shadow-sm">
+            <div className="card p-3 bg-[#F9F9F9] border border-[#E5E5E5] shadow-sm rounded-none">
               <div className="relative w-full aspect-[4/3] bg-[#EFEFEF] overflow-hidden">
                 <iframe
                   title="Peta Lokasi Riris Ghofir Boutique Surabaya"

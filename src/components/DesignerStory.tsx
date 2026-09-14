@@ -1,5 +1,6 @@
 import React from "react";
 import { Sparkles, Award, Palette, Scissors } from "lucide-react";
+import { ImageWithFallback } from "./ImageWithFallback";
 
 export const DesignerStory: React.FC = () => {
   return (
@@ -16,7 +17,7 @@ export const DesignerStory: React.FC = () => {
               Sentuhan Mahakarya Riris Ghofir: Dari Jawa Timur ke Pentas Nasional
             </h2>
 
-            <p className="text-sm sm:text-base text-[#AAAAAA] leading-relaxed mb-6 font-light">
+            <p className="text-sm sm:text-base text-[#CCCCCC] leading-relaxed mb-6 font-light">
               Berawal dari kecintaan mendalam pada keindahan kain tradisional Nusantara dan detail bordir manual, <strong>Riris Ghofir</strong> menghidupkan kembali karakter wastra daerah menjadi busana muslim berkelas haute-couture.
             </p>
 
@@ -25,7 +26,7 @@ export const DesignerStory: React.FC = () => {
             </p>
 
             {/* 3 Value Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/15">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/15 mb-10">
               <div className="flex flex-col">
                 <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-[#B38E5D] mb-3">
                   <Scissors className="w-5 h-5" />
@@ -62,26 +63,70 @@ export const DesignerStory: React.FC = () => {
                 </p>
               </div>
             </div>
+
+            {/* DaisyUI Timeline for Milestones */}
+            <div className="pt-2">
+              <h4 className="text-xs uppercase tracking-widest text-[#B38E5D] font-semibold mb-4">
+                Jejak Langkah & Perjalanan Desain
+              </h4>
+              <ul className="timeline timeline-vertical lg:timeline-horizontal text-xs">
+                <li>
+                  <div className="timeline-start text-white/70 font-serif">Awal Mula</div>
+                  <div className="timeline-middle text-[#B38E5D]">●</div>
+                  <div className="timeline-end timeline-box bg-white/5 border-white/15 text-white/90 rounded-none p-3">
+                    Pelestarian bordir halus & siluet kebaya Jawa Timur
+                  </div>
+                  <hr className="bg-white/20" />
+                </li>
+                <li>
+                  <hr className="bg-white/20" />
+                  <div className="timeline-start text-white/70 font-serif">2022</div>
+                  <div className="timeline-middle text-[#B38E5D]">●</div>
+                  <div className="timeline-end timeline-box bg-white/5 border-white/15 text-white/90 rounded-none p-3">
+                    Pembukaan Butik Fisik di Jl. Ngagel Jaya No. 96 Surabaya
+                  </div>
+                  <hr className="bg-white/20" />
+                </li>
+                <li>
+                  <hr className="bg-white/20" />
+                  <div className="timeline-start text-white/70 font-serif">2026</div>
+                  <div className="timeline-middle text-[#B38E5D]">●</div>
+                  <div className="timeline-end timeline-box bg-white/5 border-white/15 text-white/90 rounded-none p-3">
+                    Runway Indonesia Fashion Aesthetic & Koleksi Wastra Luxe
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Right Visual Quote Card */}
+          {/* Right Visual Card with Designer Photo & Quote */}
           <div className="lg:col-span-5">
-            <div className="p-8 sm:p-10 bg-white/5 border border-white/10 relative backdrop-blur-xs">
-              <span className="font-serif text-6xl text-[#B38E5D] absolute top-4 left-6 opacity-30">“</span>
-              <blockquote className="font-serif text-xl sm:text-2xl text-white italic leading-relaxed pt-6 mb-6">
-                Busana muslim bukan sekadar penutup raga, melainkan representasi keanggunan budi pekerti dan penghargaan tertinggi pada warisan leluhur kita.
-              </blockquote>
-              <div className="pt-4 border-t border-white/15 flex items-center justify-between">
-                <div>
-                  <div className="text-sm font-semibold text-white uppercase tracking-wider">
+            <div className="relative">
+              {/* Designer Portrait */}
+              <div className="relative aspect-[3/4] overflow-hidden bg-white/10 border border-white/20 mb-6 shadow-2xl">
+                <ImageWithFallback
+                  src="/images/designer/designer-riris-ghofir.jpg"
+                  alt="Desainer Riris Ghofir"
+                  aspectRatio="aspect-[3/4]"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+                  <div className="text-lg font-serif font-bold text-white">
                     Riris Ghofir
                   </div>
-                  <div className="text-xs text-[#B38E5D] tracking-widest uppercase mt-0.5">
-                    Fashion Designer & Founder
+                  <div className="text-xs text-[#B38E5D] uppercase tracking-widest">
+                    Founder & Principal Fashion Designer
                   </div>
                 </div>
-                <div className="text-right text-[11px] text-[#888888] uppercase tracking-wider">
-                  Surabaya Atelier
+              </div>
+
+              {/* Quote Box */}
+              <div className="p-6 bg-white/5 border border-white/10 relative backdrop-blur-xs">
+                <blockquote className="font-serif text-base sm:text-lg text-white/90 italic leading-relaxed mb-3">
+                  "Busana muslim bukan sekadar penutup raga, melainkan representasi keanggunan budi pekerti dan penghargaan tertinggi pada warisan leluhur kita."
+                </blockquote>
+                <div className="text-right text-[11px] text-[#B38E5D] uppercase tracking-wider font-semibold">
+                  Atelier Surabaya • Jl. Ngagel Jaya 96
                 </div>
               </div>
             </div>
