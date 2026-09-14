@@ -13,41 +13,34 @@ interface CategoryTile {
 const TILES: CategoryTile[] = [
   {
     title: "Signature Kebaya",
-    subtitle: "Siluet modern berpadu bordir manual klasik khas Jawa Timur",
+    subtitle: "Siluet kebaya modern santun berpadu bordir manual halus khas Jawa Timur",
     tag: "Haute Couture",
     link: "#koleksi",
     image: "/images/categories/kebaya.jpg"
   },
   {
-    title: "Songket Palembang",
-    subtitle: "Kemewahan wastra tenun asli berbenang emas bertaraf regal",
-    tag: "Heritage Luxe",
-    link: "#koleksi",
-    image: "/images/categories/songket.jpg"
-  },
-  {
-    title: "Modest Luxury Gown",
-    subtitle: "Gaun syar'i-friendly bernuansa runway modern & flowy",
+    title: "Tunic & Modest Wear",
+    subtitle: "Tunik beraksen mutiara dan bordir geometris kontemporer ramah hijab",
     tag: "Ready-to-Wear",
     link: "#koleksi",
-    image: "/images/categories/modest-gown.jpg"
+    image: "/images/categories/tunic.jpg"
   },
   {
-    title: "Bespoke Bridal",
-    subtitle: "Layanan fitting personal untuk busana akad & resepsi sakral",
-    tag: "Made to Order",
+    title: "Boutique Modest Set",
+    subtitle: "Busana pesta muslimah bernuansa lembut untuk wisuda, lamaran, dan resepsi",
+    tag: "Signature Pieces",
     link: "#koleksi",
-    image: "/images/categories/bridal.jpg"
+    image: "/images/categories/modest-gown.jpg"
   }
 ];
 
 export const CategoryTiles: React.FC = () => {
   return (
-    <section id="kategori" className="py-16 sm:py-20 bg-[#F9F9F9] border-b border-[#EEEEEE]">
+    <section id="kategori" className="py-12 sm:py-16 lg:py-20 bg-[#F9F9F9] border-b border-[#EEEEEE]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-4 border-b border-[#E5E5E5]">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 pb-4 border-b border-[#E5E5E5]">
           <div>
-            <span className="text-[11px] uppercase tracking-[0.25em] text-[#B38E5D] font-semibold">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#B38E5D] font-semibold">
               Kategori Kurasi
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl text-[#111111] font-semibold mt-1">
@@ -59,7 +52,7 @@ export const CategoryTiles: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TILES.map((tile, idx) => (
             <a
               key={idx}
@@ -80,9 +73,9 @@ export const CategoryTiles: React.FC = () => {
                 </div>
               </figure>
 
-              <div className="card-body p-5 justify-between">
+              <div className="card-body p-4 sm:p-5 justify-between">
                 <div>
-                  <h3 className="card-title font-serif text-xl text-[#111111] font-semibold mb-1 group-hover:text-[#B38E5D] transition-colors">
+                  <h3 className="card-title font-serif text-lg sm:text-xl text-[#111111] font-semibold mb-1 group-hover:text-[#B38E5D] transition-colors">
                     {tile.title}
                   </h3>
                   <p className="text-xs text-[#666666] leading-relaxed">
@@ -90,7 +83,7 @@ export const CategoryTiles: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#111111] group-hover:text-[#B38E5D] border-t border-[#F0F0F0]">
+                <div className="pt-3 sm:pt-4 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-[#111111] group-hover:text-[#B38E5D] border-t border-[#F0F0F0] mt-2">
                   <span>Lihat Busana</span>
                   <ArrowUpRight className="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>

@@ -59,22 +59,22 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a href="#koleksi" className="hover:text-white transition-colors">
-                  Songket Palembang Couture
+                  Tunik & Modest Wear
                 </a>
               </li>
               <li>
-                <a href="#koleksi" className="hover:text-white transition-colors">
-                  Luxury Modest Gown Sets
+                <a href="#layanan" className="hover:text-white transition-colors">
+                  Alur Fitting & Bespoke
                 </a>
               </li>
               <li>
-                <a href="#koleksi" className="hover:text-white transition-colors">
-                  Embroidered Tunics & Outer
+                <a href="#desainer" className="hover:text-white transition-colors">
+                  Filosofi Desainer
                 </a>
               </li>
               <li>
-                <a href="#koleksi" className="hover:text-white transition-colors">
-                  Bespoke Bridal & Custom Fitting
+                <a href="#butik" className="hover:text-white transition-colors">
+                  Lokasi Butik Surabaya
                 </a>
               </li>
             </ul>
